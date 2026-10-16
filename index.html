@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#5b1725">
+  <title>Svenska Hammers</title>
+
+  <style>
+    :root {
+      --claret: #5b1725;
+      --claret-dark: #310b13;
+      --blue: #79c5e8;
+      --gold: #f4c542;
+      --bg: #f4f6f9;
+      --card: #ffffff;
+      --text: #20232a;
+      --muted: #687080;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--claret-dark), var(--claret));
+      color: white;
+      padding: 22px 16px 18px;
+      text-align: center;
+      border-bottom: 5px solid var(--blue);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 27px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin: 8px 0 0;
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      overflow-x: auto;
+      background: white;
+      border-bottom: 1px solid #e3e5e9;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    nav button {
+      border: 0;
+      border-radius: 20px;
+      background: #eeeef2;
+      color: #29232a;
+      padding: 10px 15px;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    nav button.active,
+    nav button:hover {
+      background: var(--claret);
+      color: white;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 14px 45px;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    h2 {
+      color: var(--claret);
+      margin-top: 8px;
+    }
+
+    h3 { margin-top: 0; }
+
+    .hero {
+      background: linear-gradient(135deg, var(--claret), #812c40);
+      color: white;
+      padding: 28px 22px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+    }
+
+    .hero h2 {
+      color: white;
+      font-size: 28px;
+      margin: 0 0 10px;
+    }
+
+    .hero p {
+      line-height: 1.6;
+      max-width: 650px;
+    }
+
+    .gold { color: var(--gold); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 19px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px #1d26320d;
+      border: 1px solid #e7e9ee;
+    }
+
+    .card p {
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--claret);
+      color: white;
+      padding: 11px 15px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .btn:hover { background: var(--claret-dark); }
+
+    .news-source {
+      color: var(--claret);
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 9px;
+    }
+
+    .news-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 210px;
+    }
+
+    .news-card .btn {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    .match {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 12px 0;
+      padding: 15px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+    }
+
+    .match strong { color: var(--claret); }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .notice {
+      background: #fff7d6;
+      border-left: 4px solid var(--gold);
+      padding: 13px 15px;
+      border-radius: 8px;
+      line-height: 1.5;
+      margin: 15px 0;
+    }
+
+    footer {
+      text-align: center;
+      background: var(--claret-dark);
+      color: white;
+      padding: 22px 15px;
+      font-size: 13px;
+    }
+
+    footer a { color: var(--blue); }
+
+    a { overflow-wrap: anywhere; }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 22px; }
+      .hero h2 { font-size: 24px; }
+      .match { align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand">
+      <img class="logo" src="logo.png" alt="Svenska Hammers logotyp"
+           onerror="this.style.display='none'">
+      <div>
+        <h1>SVENSKA HAMMERS</h1>
+        <p>I'm Forever Blowing Bubbles</p>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Huvudmeny">
+    <button class="active" data-page="hem">Hem</button>
+    <button data-page="matcher">Matcher</button>
+    <button data-page="tabell">Tabell</button>
+    <button data-page="spelare">Spelare</button>
+    <button data-page="nyheter">Nyheter</button>
+    <button data-page="om">Om oss</button>
+  </nav>
+
+  <main>
+    <section id="hem" class="page active">
+      <div class="hero">
+        <h2>Once a Hammer, <span class="gold">always a Hammer!</span></h2>
+        <p>
+          Välkommen till Svenska Hammers – en samlingsplats för svenska
+          West Ham-supportrar. Följ laget, läs nyheter och håll koll på
+          matcher och resultat.
+        </p>
+        <a class="btn" href="https://www.whufc.com/en" target="_blank"
+           rel="noopener noreferrer">Officiella West Ham</a>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>⚽ Matcher och resultat</h3>
+          <p>Se lagets senaste resultat och hitta den officiella matchkalendern.</p>
+          <button class="btn" onclick="showPage('matcher')">Visa matcher</button>
+        </div>
+
+        <div class="card">
+          <h3>📰 Senaste nyheterna</h3>
+          <p>Gå vidare till klubbens egna nyheter och etablerade sportmedier.</p>
+          <button class="btn" onclick="showPage('nyheter')">Läs nyheter</button>
+        </div>
+
+        <div class="card">
+          <h3>📊 Tabell</h3>
+          <p>Öppna den officiella sidan för aktuell ligatabell.</p>
+          <button class="btn" onclick="showPage('tabell')">Visa tabell</button>
+        </div>
+      </div>
+
+      <div class="notice">
+        <strong>Tips:</strong> Nyheter, matchresultat och tabell länkar vidare
+        till källorna så att du kan läsa aktuell information. Den här versionen
+        hämtar inte automatiskt live-data.
+      </div>
+    </section>
+
+    <section id="matcher" class="page">
+      <h2>Matcher och resultat</h2>
+      <p>Hitta West Hams senaste resultat och kommande matcher via klubbens officiella webbplats.</p>
+
+      <div class="card">
+        <h3>West Ham United – matcher</h3>
+        <p>Resultat, spelschema, matchrapporter och matchinformation.</p>
+        <a class="btn" href="https://www.whufc.com/en/matches/mens-team/results"
+           target="_blank" rel="noopener noreferrer">Se matcher och resultat</a>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3>Kommande matcher och biljetter</h3>
+        <p>Kontrollera alltid datum och avsparkstid hos klubben, eftersom matcher kan flyttas.</p>
+        <a class="btn" href="https://www.whufc.com/en/matches"
+           target="_blank" rel="noopener noreferrer">Officiell matchkalender</a>
+      </div>
+    </section>
+
+    <section id="tabell" class="page">
+      <h2>Ligatabell</h2>
+      <div class="card">
+        <h3>Aktuell tabell</h3>
+        <p>Öppna West Hams officiella match- och resultatsida för tabell och ligainformation.</p>
+        <a class="btn" href="https://www.whufc.com/en/matches"
+           target="_blank" rel="noopener noreferrer">Visa officiell tabell</a>
+      </div>
+      <p class="muted">Tabellen visas inte direkt i appen ännu.</p>
+    </section>
+
+    <section id="spelare" class="page">
+      <h2>Spelartruppen</h2>
+      <p>Se den aktuella herrtruppen och spelarnas profiler på West Hams officiella webbplats.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Herrlaget</h3>
+          <p>Spelare, positioner och spelarprofiler.</p>
+          <a class="btn" href="https://www.whufc.com/en/teams/mens-team"
+             target="_blank" rel="noopener noreferrer">Visa spelartruppen</a>
+        </div>
+        <div class="card">
+          <h3>Damlaget</h3>
+          <p>Nyheter och information om West Hams damlag.</p>
+          <a class="btn" href="https://www.whufc.com/en/teams/womens-team"
+             target="_blank" rel="noopener noreferrer">Visa damlaget</a>
+        </div>
+      </div>
+      <p class="muted">Spelarbilder och profiler hämtas från klubbens webbplats via länkarna.</p>
+    </section>
+
+    <section id="nyheter" class="page">
+      <h2>West Ham-nyheter</h2>
+      <p>Utvalda källor för klubbnyheter, analyser, matchrapporter och övergångsrykten.</p>
+
+      <div class="grid">
+        <article class="card news-card">
+          <div class="news-source">Officiell källa</div>
+          <h3>West Ham United – senaste nytt</h3>
+          <p>Klubbens egna nyheter, spelarintervjuer, presskonferenser och laguppdateringar.</p>
+          <a class="btn" href="https://www.whufc.com/en/news/category/mens-team"
+             target="_blank" rel="noopener noreferrer">Läs klubbnyheter</a>
+        </article>
+
+        <article class="card news-card">
+          <div class="news-source">Sky Sports</div>
+          <h3>Nyheter och övergångar</h3>
+          <p>Sportnyheter, analyser och rapportering om West Ham.</p>
+          <a class="btn" href="https://www.skysports.com/west-ham-united"
+             target="_blank" rel="noopener noreferrer">Läs hos Sky Sports</a>
+        </article>
+
+        <article class="card news-card">
+          <div class="news-source">The Guardian</div>
+          <h3>Matcher och analyser</h3>
+          <p>Matchrapporter, kommentarer och fördjupande fotbollsbevakning.</p>
+          <a class="btn" href="https://www.theguardian.com/football/westhamunited"
+             target="_blank" rel="noopener noreferrer">Läs hos The Guardian</a>
+        </article>
+
+        <article class="card news-card">
+          <div class="news-source">Officiell matchinformation</div>
+          <h3>Resultat och matchrapporter</h3>
+          <p>Kontrollera slutresultat och läs matchrapporter direkt från klubben.</p>
+          <a class="btn" href="https://www.whufc.com/en/matches/mens-team/results"
+             target="_blank" rel="noopener noreferrer">Läs matchrapporter</a>
+        </article>
+      </div>
+
+      <div class="notice">
+        Nyhetskorten öppnar källornas egna sidor. För att visa automatiskt
+        uppdaterade rubriker direkt här behövs en RSS-feed eller ett API.
+      </div>
+    </section>
+
+    <section id="om" class="page">
+      <h2>Om Svenska Hammers</h2>
+      <div class="card">
+        <h3>För svenska West Ham-supportrar</h3>
+        <p>
+          Svenska Hammers är ett supporterprojekt för dig som följer West Ham United.
+          Målet är att samla genvägar till nyheter, matcher, resultat och spelartrupp
+          på ett svenskt och lättanvänt ställe.
+        </p>
+        <p>
+          Detta är en fristående supportersida och är inte en officiell app
+          från West Ham United.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Svenska Hammers</strong> · I'm Forever Blowing Bubbles</p>
+    <p>
+      Fristående supporterprojekt – inte officiellt anslutet till West Ham United.
+    </p>
+    <p>
+      <a href="https://www.whufc.com/en" target="_blank" rel="noopener noreferrer">
+        West Ham United officiella webbplats
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll(".page").forEach(function (page) {
+        page.classList.remove("active");
+      });
+
+      document.querySelectorAll("nav button").forEach(function (button) {
+        button.classList.toggle("active", button.dataset.page === pageId);
+      });
+
+      var selectedPage = document.getElementById(pageId);
+      if (selectedPage) selectedPage.classList.add("active");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.querySelectorAll("nav button").forEach(function (button) {
+      button.addEventListener("click", function () {
+        showPage(button.dataset.page);
+      });
+    });
+  </script>
+</body>
+</html>
